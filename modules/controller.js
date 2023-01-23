@@ -24,7 +24,6 @@ const displayBooks = (booksArray) => {
   });
 };
 
-
 const handleSubmit = (arr) => {
   const title = document.querySelector('#book_title').value;
   const author = document.querySelector('#book_author').value;
@@ -74,5 +73,6 @@ const handleStorage = (data) => {
   localStorage.setItem('books', JSON.stringify(data));
 };
 
-
-export {handleStorage, navigationHandler, handleSubmit, displayBooks};
+export {
+  handleStorage, navigationHandler, handleSubmit, displayBooks,
+};
