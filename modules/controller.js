@@ -1,6 +1,6 @@
 import { listOfBooks } from './selectors.js';
 
-export default function (booksArray) {
+const displayBooks = (booksArray) => {
   const collection = JSON.parse(localStorage.getItem('books'));
   booksArray.books = collection;
 
@@ -22,4 +22,57 @@ export default function (booksArray) {
       booksArray.removeBook(book.id);
     });
   });
-}
+};
+
+
+const handleSubmit = (arr) => {
+  const title = document.querySelector('#book_title').value;
+  const author = document.querySelector('#book_author').value;
+  const index = Math.random();
+  arr.addBook({ id: index, title, author });
+  const collection = JSON.parse(localStorage.getItem('books'));
+  arr = collection;
+  const newBook = arr.filter((book) => book.id === index)[0];
+  const listItem = document.createElement('li');
+  listItem.setAttribute('id', newBook.id);
+  listItem.innerHTML = `<div>
+                            <span class="title">"${newBook.title}"</span> by <span class="author">${newBook.author}</span>
+                          </div>
+                          <div>
+                            <button id=${newBook.id} class="remove_btn">Remove</button>
+                          </div>
+                        `;
+  listOfBooks.appendChild(listItem);
+  const listB = document.getElementById(`${newBook.id}`);
+  listB.addEventListener('click', () => {
+    const deletedBook = document.getElementById(newBook.id);
+    deletedBook.parentNode.removeChild(deletedBook);
+    arr.removeBook(newBook.id);
+  });
+};
+
+const navigationHandler = (navLinks, sections) => {
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      navLinks.forEach((li) => {
+        li.classList.remove('active');
+      });
+      sections.forEach((section) => {
+        section.classList.add('hide');
+        const sectionId = section.getAttribute('id');
+        const linkId = link.getAttribute('id');
+        if (sectionId === `section-${linkId}`) {
+          section.classList.remove('hide');
+          link.classList.add('active');
+        }
+      });
+    });
+  });
+};
+
+const handleStorage = (data) => {
+  localStorage.setItem('books', JSON.stringify(data));
+};
+
+
+export {handleStorage, navigationHandler, handleSubmit, displayBooks};

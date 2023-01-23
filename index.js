@@ -2,9 +2,7 @@ import BookShelf from './modules/class.js';
 import {
   formBtn, navLinks, sections, time,
 } from './modules/selectors.js';
-import handleSubmit from './modules/formHandler.js';
-import navigationHandler from './modules/navigations.js';
-import displayBooks from './modules/controller.js';
+import {displayBooks, handleSubmit, navigationHandler} from './modules/controller.js';
 import { dt, f } from './modules/displayTime.js';
 
 const {

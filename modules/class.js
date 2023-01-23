@@ -1,4 +1,4 @@
-import handleStorage from './storage.js';
+import {handleStorage} from './controller.js';
 
 export default class BookShelf {
   constructor() {
