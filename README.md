@@ -66,7 +66,7 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 > Add a link to your deployed project.
-- [Live Demo Link](https://ayomoses1.github.io/Awesome-Books/)
+- [Live Demo Link](https://ayomoses1.github.io/AwesomeBooks/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
