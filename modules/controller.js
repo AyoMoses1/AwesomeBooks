@@ -2,8 +2,11 @@ import { listOfBooks } from './selectors.js';
 
 const displayBooks = (booksArray) => {
   const collection = JSON.parse(localStorage.getItem('books'));
-  booksArray.books = collection;
-
+  if (collection) {
+    booksArray.books = collection;
+  } else {
+    booksArray.books = [];
+  }
   booksArray.books.forEach((book) => {
     const listItem = document.createElement('li');
     listItem.setAttribute('id', book.id);
