@@ -3,15 +3,12 @@ import {
   formBtn, navLinks, sections, time,
 } from './modules/selectors.js';
 import { displayBooks, handleSubmit, navigationHandler } from './modules/controller.js';
-import { dt, f } from './modules/displayTime.js';
+import { DateTime } from './modules/luxon.js';
 
-const {
-  year, hour, minute, second,
-} = dt.c;
-
-const date = dt.setLocale('en-US').toLocaleString(f);
-
-time.innerHTML = `${date}, ${year}, ${hour}:${minute}:${second}`;
+setInterval(() => {
+  const currentDate = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
+  time.innerHTML = currentDate;
+}, 1000);
 
 const booksArray = new BookShelf();
 window.onload = displayBooks(booksArray);

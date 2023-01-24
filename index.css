@@ -133,5 +133,6 @@ footer {
 }
 
 .time {
-  float: right;
+  display: flex;
+ justify-content: end;
 }

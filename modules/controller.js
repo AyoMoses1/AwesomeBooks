@@ -30,8 +30,8 @@ const handleSubmit = (arr) => {
   const index = Math.random();
   arr.addBook({ id: index, title, author });
   const collection = JSON.parse(localStorage.getItem('books'));
-  arr = collection;
-  const newBook = arr.filter((book) => book.id === index)[0];
+  arr.books = collection;
+  const newBook = arr.books.filter((book) => book.id === index)[0];
   const listItem = document.createElement('li');
   listItem.setAttribute('id', newBook.id);
   listItem.innerHTML = `<div>
@@ -45,8 +45,8 @@ const handleSubmit = (arr) => {
   const listB = document.getElementById(`${newBook.id}`);
   listB.addEventListener('click', () => {
     const deletedBook = document.getElementById(newBook.id);
-    deletedBook.parentNode.removeChild(deletedBook);
     arr.removeBook(newBook.id);
+    deletedBook.parentNode.removeChild(deletedBook);
   });
 };
 
